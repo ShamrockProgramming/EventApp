@@ -1,0 +1,23 @@
+<h1>Add an Event!</h1>
+
+{{#if error}} <span>{{error}}</span>{{/if}}
+<form action="/user/add" method="post">
+    <div class="form-group">
+        <label>ID</label>
+        <input type="text" name="id" class="form-control" placeholder="add id key number">
+    </div>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" placeholder="add name">
+    </div>
+    <div class="form-group">
+        <label>Location</label>
+        <input type="text" name="location" class="form-control" placeholder="add location">
+    </div>
+    <div class="form-group">
+        <label>Time</label>
+        <input type="text" name="time" class="form-control" placeholder="add time">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
+<a class="btn btn-default" href="/">Back</a>

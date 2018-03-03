@@ -1,0 +1,31 @@
+<h1 style="text-align:center;">{{title}}</h1>
+<h2 style="text-align:center;   ">Search for your up coming events!</h2>
+
+{{#if error}} <span>{{error}}</span>{{/if}}
+<form class="form-inline" action="/user/search/" method="post">
+    <div class="form-group" style="margin: 24px auto;">
+        <input type="text" name="id" style="width:300px;"class="form-control" placeholder="serach for events">
+        <input type="submit" class="btn btn-primary" value="Search">
+    </div>
+
+</form>
+<p>This application is a work in progress.  I have reached many milestones here is a short list of this I have completed and still need to complete.</p>
+<h3><strong>Completed</strong></h3>
+<ul>
+    <li>App turns on</li>
+    <li>I have different routes with wiews for different tasks</li>
+    <ul>
+        <li>main page</li>
+        <li>add page</li>
+        <li>single event page</li>
+        <li>all events page</li>
+    </ul>
+    <li>Connect to Redis DB established</li>
+    <li>Can add and delete information from DB</li>
+</ul>
+<h3><strong>To Do</strong></h3>
+<ul>
+    <li><strong>Cannot</strong> show all events dynamically proportional to the length of the list(statically defined) <strong>YET!!</strong></li>
+    <li><strong>Cannot</strong>update information in the database <strong>YET!!</strong></li>
+    <li><strong>Cannot</strong>expose the event.id as part of the route <strong>YET!!</strong></li>
+</ul>
