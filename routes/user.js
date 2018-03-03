@@ -1,6 +1,7 @@
+const redis = require('redis');
 const express = require('express');
 const router = express.Router();
-const redis = require('redis');
+
 
 let client  = redis.createClient();
 
@@ -13,7 +14,7 @@ client.on('connect',function(){
 router.get('/', function(req, res, next) {
   res.send('some user data');
 });
-router.get('/add',function (req, res, next){
+router.get('/addevent',function (req, res, next){
     res.render('addevent');
 });
 
@@ -36,7 +37,7 @@ router.post('/search/',function (req, res, next){
     })
 });
 
-router.post('/add',function (req, res,next){
+router.post('/addevent',function (req, res,next){
     let eventid = 'event'+req.body.id;
     let name = req.body.name;
     let location = req.body.location;
