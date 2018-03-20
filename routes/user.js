@@ -20,7 +20,7 @@ router.get('/addevent',function (req, res, next){
 
 /* POST information */
 router.post('/search/',function (req, res, next){
-    let id = req.body.id;
+    let id = "event"+req.body.id;
     client.hgetall(id,function(err,obj){
         if(!obj){
             res.render('index',{
@@ -29,7 +29,8 @@ router.post('/search/',function (req, res, next){
             });
         }
         else{
-            obj.id = id;
+            console.log(obj);
+            obj.eventid = req.body.id;
             res.render('events',{
                 event:obj
             });
