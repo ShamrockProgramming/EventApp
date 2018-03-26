@@ -18,6 +18,25 @@ router.get('/addevent',function (req, res, next){
     res.render('addevent');
 });
 
+router.post('/goto/:id',function (req, res, next){
+    let id = req.params.id;
+    client.hgetall(id,function(err,obj){
+        if(!obj){
+            res.render('index',{
+                error: 'event does not exist',
+                title: 'NO!'
+            });
+        }
+        else{
+            console.log(obj);
+            obj.eventid = req.body.id;
+            res.render('events',{
+                event:obj
+            });
+        }
+    })
+});
+
 /* POST information */
 router.post('/search/',function (req, res, next){
     let id = "event"+req.body.id;
