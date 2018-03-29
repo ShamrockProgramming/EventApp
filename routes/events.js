@@ -30,15 +30,14 @@ router.get('/all',function(req, res, next){
         }
         else if(1==0){
             //test idea
-            let eventJSON = {events:[]};
-
+            let events = {};
+            events.list = [];
             for(let d=0; d<data.length;d++){
-                client.hgetall(data[d],function(err,obj){
-                    eventJSON.events.push({event:obj});
-                });
+                let item = "event"+d;
+                events.list[d] = data[d];
             }
-            res.render('allevents',eventJSON);
-            console.log(eventJSON);
+            res.render('allevents',events);
+            console.log(events);
         }
         else{
             let eventlist = {};
