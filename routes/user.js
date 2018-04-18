@@ -18,7 +18,7 @@ router.get('/addevent',function (req, res, next){
     res.render('addevent');
 });
 
-router.post('/goto/:id',function (req, res, next){
+router.get('/goto/:id',function (req, res, next){
     let id = "event"+req.params.id;
     client.hgetall(id,function(err,obj){
         if(!obj){
