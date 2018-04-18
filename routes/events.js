@@ -28,17 +28,6 @@ router.get('/all',function(req, res, next){
         if(err){
             console.log(err);
         }
-        else if(1==0){
-            //test idea
-            let events = {};
-            events.list = [];
-            for(let d=0; d<data.length;d++){
-                let item = "event"+d;
-                events.list[d] = data[d];
-            }
-            res.render('allevents',events);
-            console.log(events);
-        }
         else{
             let eventlist = {};
 
