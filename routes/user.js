@@ -19,10 +19,10 @@ router.get('/addevent',function (req, res, next){
 });
 
 router.post('/goto/:id',function (req, res, next){
-    let id = req.params.id;
+    let id = "event"+req.params.id;
     client.hgetall(id,function(err,obj){
         if(!obj){
-            res.render('index',{
+            res.render('error',{
                 error: 'event does not exist',
                 title: 'NO!'
             });
@@ -42,7 +42,7 @@ router.post('/search/',function (req, res, next){
     let id = "event"+req.body.id;
     client.hgetall(id,function(err,obj){
         if(!obj){
-            res.render('index',{
+            res.render('error',{
                 error: 'event does not exist',
                 title: 'NO!'
             });

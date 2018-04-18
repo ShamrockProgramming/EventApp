@@ -16,14 +16,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/all',function(req, res, next){
 
-    //TODO make a call to the database to retreive all events.
-
-    /*res.render('allevents', {title: 'All Events Ever!',
-                                para: 'This is a short ',
-                                btn1:'Go to bottom',
-                                btn2:'Go to top'});
-
-    */
     client.keys('event*', function(err, data){
         if(err){
             console.log(err);
