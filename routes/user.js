@@ -23,13 +23,14 @@ router.get('/goto/:id',function (req, res){
     client.hgetall(id,function(err,obj){
         if(!obj){
             console.log(id);
-            res.render('error',{
+            res.render('index',{
                 error: 'event does not exist',
                 title: 'NO!'
             });
         }
         else{
             console.log(obj);
+            obj.id = req.params.id;
             res.render('events',{
                 event:obj
             });
@@ -43,13 +44,15 @@ router.post('/search/',function (req, res){
     client.hgetall(id,function(err,obj){
         if(!obj){
             res.render('error',{
-                error: 'event does not exist',
-                title: 'NO!'
+                error: 'custom 404',
+                title: 'NO!',
+                message: 'The event id you were looking for does not exist in this database.'
             });
         }
         else{
             console.log(obj);
-            obj.eventid = req.body.id;
+            obj.id = req.body.id;
+            console.log(obj);
             res.render('events',{
                 event:obj
             });
@@ -64,6 +67,7 @@ router.post('/addevent',function (req, res){
     let time = req.body.time;
 
     client.hmset(eventid, [
+        'id', eventid,
         'name', name,
         'location', location,
         'time', time

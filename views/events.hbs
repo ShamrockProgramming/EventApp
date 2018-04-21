@@ -1,10 +1,10 @@
 <h1>{{event.name}}</h1>
-<h3> Event ID : {{event.eventid}}</h3>
+<h3> Event ID : {{event.id}}</h3>
 <ul class="list-group">
     <li class="list-group-item">Location: {{event.location}}</li>
     <li class="list-group-item">Time: {{event.time}}</li>
 </ul>
 <a class="btn btn-default pull-left" href="/">Back</a>
-<form  action="/user/delete/{{event.eventid}}?_method=DELETE" method="POST">
+<form  action="/user/delete/{{event.id}}?_method=DELETE" method="POST">
     <input type="submit" class="btn btn-danger pull-right" value="Delete">
 </form>
