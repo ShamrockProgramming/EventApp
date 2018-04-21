@@ -16,39 +16,19 @@ router.get('/', function(req, res, next) {
 
 router.get('/all',function(req, res, next){
 
-    //TODO make a call to the database to retreive all events.
-
-    /*res.render('allevents', {title: 'All Events Ever!',
-                                para: 'This is a short ',
-                                btn1:'Go to bottom',
-                                btn2:'Go to top'});
-
-    */
     client.keys('event*', function(err, data){
         if(err){
             console.log(err);
-        }
-        else if(1==0){
-            //test idea
-            let events = {};
-            events.list = [];
-            for(let d=0; d<data.length;d++){
-                let item = "event"+d;
-                events.list[d] = data[d];
-            }
-            res.render('allevents',events);
-            console.log(events);
         }
         else{
             let eventlist = {};
 
             for(let d=0; d<data.length; d++){
-                let item = "eventlist"+d;
+                let item = "evnt"+d;
                 eventlist[item] = data[d];
             }
             res.render('allevents', eventlist);
             console.log(data);
-            console.log(eventlist);
         }
     });
 });

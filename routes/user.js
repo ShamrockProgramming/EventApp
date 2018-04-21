@@ -11,25 +11,25 @@ client.on('connect',function(){
 });
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.send('some user data');
 });
-router.get('/addevent',function (req, res, next){
+router.get('/addevent',function (req, res){
     res.render('addevent');
 });
 
-router.post('/goto/:id',function (req, res, next){
+router.get('/goto/:id',function (req, res){
     let id = req.params.id;
     client.hgetall(id,function(err,obj){
         if(!obj){
-            res.render('index',{
+            console.log(id);
+            res.render('error',{
                 error: 'event does not exist',
                 title: 'NO!'
             });
         }
         else{
             console.log(obj);
-            obj.eventid = req.body.id;
             res.render('events',{
                 event:obj
             });
@@ -38,7 +38,7 @@ router.post('/goto/:id',function (req, res, next){
 });
 
 /* POST information */
-router.post('/search/',function (req, res, next){
+router.post('/search/',function (req, res){
     let id = "event"+req.body.id;
     client.hgetall(id,function(err,obj){
         if(!obj){
@@ -57,7 +57,7 @@ router.post('/search/',function (req, res, next){
     })
 });
 
-router.post('/addevent',function (req, res,next){
+router.post('/addevent',function (req, res){
     let eventid = 'event'+req.body.id;
     let name = req.body.name;
     let location = req.body.location;
@@ -81,7 +81,7 @@ router.post('/addevent',function (req, res,next){
 });
 
 /* DELETE */
-router.delete('/delete/:id',function(req,res,next){
+router.delete('/delete/:id',function(req,res){
     client.del(req.params.id);
     res.redirect('/')
 });
