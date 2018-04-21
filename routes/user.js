@@ -18,11 +18,18 @@ router.get('/addevent',function (req, res){
     res.render('addevent');
 });
 
+<<<<<<< HEAD
 router.get('/goto/:id',function (req, res){
     let id = req.params.id;
     client.hgetall(id,function(err,obj){
         if(!obj){
             console.log(id);
+=======
+router.get('/goto/:id',function (req, res, next){
+    let id = "event"+req.params.id;
+    client.hgetall(id,function(err,obj){
+        if(!obj){
+>>>>>>> f4dde22d295cc003e64e48656031302f3c03ea29
             res.render('error',{
                 error: 'event does not exist',
                 title: 'NO!'
@@ -42,7 +49,7 @@ router.post('/search/',function (req, res){
     let id = "event"+req.body.id;
     client.hgetall(id,function(err,obj){
         if(!obj){
-            res.render('index',{
+            res.render('error',{
                 error: 'event does not exist',
                 title: 'NO!'
             });
